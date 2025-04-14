@@ -37,7 +37,7 @@ const app = Vue.createApp({
       // Fetch random user profile from API
        fetchRandomProfile() {
         
-          fetch('http://comp6062.liamstewart.ca/random-user-profile')
+          fetch('https://comp6062.liamstewart.ca/random-user-profile')
           .then(response => {
           if (response.ok) {
             console.log('Random Profile recived');
