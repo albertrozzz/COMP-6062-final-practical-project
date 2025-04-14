@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COMP-6062 Final Practical Project</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main container for Vue app -->
+    <div id="app" class="container mt-5">
+        <div class="row">
+            <div class="card mb-4 px-3">
+                <header>
+                    <h1>Albert Paul - 1190851</h1>
+                </header>  
+            </div>
+            <div class="col-md-4">
+                
+                <!-- Random User Profile Module -->
+                
+                    <div class="card">
+                        <div class="card-title-box ">
+                            <h2 class="card-title">Random User Profile</h2>
+                        </div>
+                    <div class="card-body">
+                        <div v-if="user">
+                        <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+                        <p><strong>Age:</strong> {{ user.age }}</p>
+                        <img :src="user.photo" alt="User Profile Photo" class="img-fluid rounded mb-3" style="max-width: 150px;" />
+                    </div>
+                        <div class="button">
+                            <button class="btn btn-dark" @click="fetchRandomProfile">New Profile</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-4">   
+                 <!-- Weather Module  -->
+                <div class="card">
+                    <div class="card-title-box ">
+                        <h2 class="card-title">Weather Information</h2>
+                    </div>
+                    <div class="card-body">
+                        <form @submit.prevent="fetchWeather">
+                            <div class="container mb-2">
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <label for="cityInput" class="form-label custom-label">City:</label>
+                                  </div>
+                                  <div class="col">
+                                    <input type="text" id="cityInput" class="form-control" placeholder="Enter city" v-model="weatherInputs.city" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="container mb-2">
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <label for="provinceInput" class="form-label custom-label">Province:</label>
+                                  </div>
+                                  <div class="col">
+                                    <input type="text" id="provinceInput" class="form-control" placeholder="Enter Province" v-model="weatherInputs.province" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="container mb-2">
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <label for="countryInput" class="form-label custom-label">Country:</label>
+                                  </div>
+                                  <div class="col">
+                                    <input type="text" id="countryInput" class="form-control" placeholder="Enter Country" v-model="weatherInputs.country" />
+                                  </div>
+                                </div>
+                              </div>
+                            <button class="btn btn-dark mb-2" >Get Weather</button>
+                        </form>
+                        <div>
+                            <p><strong>Temperature:</strong> {{ weather.temperature }}</p>
+                            <p><strong>Wind:</strong> {{ weather.wind }}</p>
+                            <p><strong>Description:</strong> {{ weather.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">   
+                 <!-- Dictionary Module  -->
+                
+                <div class="card">
+                    <div class="card-title-box ">
+                        <h2 class="card-title">Dictionary</h2>
+                    </div>
+                    <div class="card-body">
+                        <form @submit.prevent="fetchDefinition">
+                            <div class="mb-2">
+                                <input type="text" class="form-control" placeholder="Enter a word" v-model="wordInput" />
+                            </div>
+                            <button class="btn btn-dark mb-2">Define</button>
+                        </form>
+                        <div v-if="dictionary.word">
+                            <p><strong>Word:</strong> {{ dictionary.word }}</p>
+                            <p><strong>Phonetic:</strong> {{ dictionary.phonetic }}</p>
+                            <p><strong>Definition:</strong> {{ dictionary.definition }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+       <p> © 2025 Albert Paul - 1190851.</p> 
+       <p>All rights reserved.</p>
+        
+    </footer>
+    <!-- Vue.js CDN -->
+    <script src="https://unpkg.com/vue@3.4.31/dist/vue.global.js"></script>
+    <!-- JavaScript file -->
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
